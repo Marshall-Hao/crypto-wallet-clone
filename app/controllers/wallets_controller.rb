@@ -1,5 +1,5 @@
 class WalletsController < ApplicationController
-  before_action :set_wallet, only: [:show, :edit, :update]
+  before_action :set_wallet, only: [:show, :edit, :update, :deposit]
 
   def index
     @wallets = Wallet.all
@@ -39,7 +39,7 @@ class WalletsController < ApplicationController
   end
 
   def wallet_params
-    params.require(:wallet).permit(:name, :balance)
+    params.require(:wallet).permit(:name)
   end
 
 end
