@@ -1,0 +1,11 @@
+<div class="container new-list col-12 col-lg-4">
+<%= simple_form_for(@wallet) do |w| %>
+  <div class="form-inputs">
+    <%= w.input :name,label: 'Creat a Wallet:', placeholder:"give a Wallet name" %>
+  </div>
+
+  <div class="form-actions btn btn-blue">
+    <%= w.button :submit %>
+  </div>
+<% end %>
+</div>

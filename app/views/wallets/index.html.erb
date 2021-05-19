@@ -1,0 +1,7 @@
+<ul>
+  <% @wallets.each do |wallet| %>
+    <li><%= wallet.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Make a new wallet', new_wallet_path, class:"btn btn-flat"  %>
