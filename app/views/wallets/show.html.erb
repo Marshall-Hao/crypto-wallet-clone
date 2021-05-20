@@ -1,12 +1,25 @@
-<h2><%= @wallet.name %></h2>
-<p><%= @wallet.balance %></p>
+<div class="container new-list col-12 col-lg-10 mt-4">
+<h4>Wallet Name: <%=@wallet.name %></h4>
+<h5>Balance: <%= @wallet.balance %></h5>
 
-<ul class="list-group">
-  <% @wallet.transactions.each do |transaction| %>
-    <li class="list-group-item"><%= transaction.activity %></li>
-    <li class="list-group-item"><%= transaction.amount %></li>
-  <% end %>
+<%= link_to 'Edit The Wallet', edit_wallet_path, class:"btn btn-primary mb-3"  %>
+<%= link_to 'Make a Transaction', new_wallet_transaction_path(@wallet), class:"btn btn-primary mb-3"  %>
+
+<h3>Transaction History</h3>
+<ul class="list-group list-group-horizontal-lg">
+  <li class="list-group-item list-activity">Activity</li>
+  <li class="list-group-item list-amount">Amount</li>
+  <li class="list-group-item list-receiver">Cash_Receiver</li>
+  <li class="list-group-item list-sender">Cash_Sender</li>
+  <li class="list-group-item list-sender">Create_Time</li>
 </ul>
-
-<%= link_to 'edit the wallet', edit_wallet_path, class:"btn btn-flat"  %>
-<%= link_to 'make a transaction', new_wallet_transaction_path(@wallet), class:"btn btn-flat"  %>
+<% @wallet.transactions.each do |transaction| %>
+<ul class="list-group list-group-horizontal-lg">
+  <li class="list-group-item list-activity"><%= transaction.activity %></li>
+  <li class="list-group-item list-amount"><%= transaction.amount %></li>
+  <li class="list-group-item list-receiver"><%= transaction.receiver_email %></li>
+  <li class="list-group-item list-sender"><%= transaction.sender_email %></li>
+  <li class="list-group-item list-sender"><%= transaction.created_at.strftime("%m-%e-%y %H:%M")%></li>
+</ul>
+<% end %>
+</div>

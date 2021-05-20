@@ -1,8 +1,30 @@
-<ul>
-  <% @wallets.each do |wallet| %>
-    <li><%= wallet.name %></li>
-    <li><%= link_to 'show', wallet_path(wallet)  %></li>
+<div class="container new-list col-12 col-lg-10 mt-4">
+<h2>Wallet</h2>
+<ul class="list-group list-group-horizontal-lg">
+  <li class="list-group-item list-activity">Name</li>
+  <li class="list-group-item list-amount">Balance</li>
+  <% if current_user.admin %>
+    <li class="list-group-item list-sender">User_Email</li>
   <% end %>
 </ul>
+  <% @wallets.each do |wallet| %>
+  <ul class="list-group list-group-horizontal-lg">
+    <li class="list-group-item list-activity"><%= wallet.name %></li>
+    <li class="list-group-item list-amount"><%= wallet.balance %></li>
+    <% if current_user.admin %>
+    <li class="list-group-item list-sender"><%= wallet.user.email %></li>
+    <% end %>
+    <% if policy(wallet).edit? %>
+    <li class="list-group-item"><%= link_to 'Edit', edit_wallet_path(wallet), class:"btn btn-primary" %></li>
+    <% end %>
+    <li class="list-group-item"><%= link_to 'transactions detail', wallet_path(wallet), class:"btn btn-primary" %></li>
+    <% if policy(wallet).edit? %>
+    <li class="list-group-item"><%= link_to 'Make a transaction', new_wallet_transaction_path(wallet), class:"btn btn-primary" %></li>
+    <% end %>
+  </ul>
+  <% end %>
 
-<%= link_to 'Make a new wallet', new_wallet_path, class:"btn btn-flat"  %>
+<% if current_user.wallets.count <1 %>
+<%= link_to 'Make a new wallet', new_wallet_path, class:"btn btn-primary mt-3"  %>
+<% end %>
+</div>

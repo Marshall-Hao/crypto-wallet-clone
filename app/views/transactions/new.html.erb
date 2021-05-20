@@ -9,7 +9,13 @@
   </div>
 
   <div class="form-inputs">
-    <%= t.input :receiver_email,label: 'Enter a email:' %>
+    <% emails = []%>
+    <% User.all.each do |user| %>
+      <% if @wallet.user != user %>
+        <% emails<< user.email %>
+      <% end %>
+    <% end %>
+    <%= t.input :receiver_email,label: 'Enter a email:',collection: emails%>
   </div>
 
   <div class="form-actions btn btn-blue">

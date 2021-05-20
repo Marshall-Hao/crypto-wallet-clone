@@ -2,7 +2,7 @@ class WalletsController < ApplicationController
   before_action :set_wallet, only: [:show, :edit, :update]
 
   def index
-    @wallets = policy_scope(Wallet)
+    @wallets = policy_scope(Wallet).order(created_at: :desc)
   end
 
   def show
