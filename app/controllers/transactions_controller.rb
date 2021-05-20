@@ -18,6 +18,21 @@ class TransactionsController < ApplicationController
       else
         render :new
       end
+    elsif @transaction.activity == 'transfer'
+      if @transaction.amount <= @wallet.balance
+        @wallet.update(balance: @wallet.balance - @transaction.amount)
+        @receiver_wallet = User.find_by(email: @transaction.receiver_email).wallets.first
+        @receiver_wallet.update(balance: @receiver_wallet.balance + @transaction.amount)
+        Transaction.create(activity: "receive", amount: @transaction.amount, sender_email: @wallet.user.email, wallet: @receiver_wallet)
+        if @transaction.save
+          redirect_to wallet_path(@wallet), notice: 'Transaction was successfully created.'
+        else
+          render :new
+        end
+      else
+        flash.now[:alert] = "Transaction cannot be done due to insufficient cash."
+        render :new
+      end
     else
       if @transaction.amount <= @wallet.balance
         @wallet.update(balance: @wallet.balance - @transaction.amount)
@@ -41,6 +56,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:activity, :amount)
+    params.require(:transaction).permit(:activity, :amount, :receiver_email)
   end
 end

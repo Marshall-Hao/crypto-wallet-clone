@@ -1,11 +1,15 @@
 <div class="container new-list col-12 col-lg-4">
 <%= simple_form_for([@wallet, @transaction]) do |t| %>
   <div class="form-inputs">
-    <%= t.input :activity,label: 'Make a transaction:' ,collection: Transaction::ACTIVITY%>
+    <%= t.input :activity,label: 'Make a transaction:' ,collection: Transaction::OPTIONS%>
   </div>
 
   <div class="form-inputs">
     <%= t.input :amount,label: 'Enter a Amount:', placeholder:"give a number" %>
+  </div>
+
+  <div class="form-inputs">
+    <%= t.input :receiver_email,label: 'Enter a email:' %>
   </div>
 
   <div class="form-actions btn btn-blue">
