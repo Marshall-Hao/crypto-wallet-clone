@@ -1,8 +1,8 @@
 class WalletsController < ApplicationController
-  before_action :set_wallet, only: [:show, :edit, :update, :deposit]
+  before_action :set_wallet, only: [:show, :edit, :update]
 
   def index
-    @wallets = Wallet.all
+    @wallets = policy_scope(Wallet)
   end
 
   def show
@@ -10,11 +10,14 @@ class WalletsController < ApplicationController
 
   def new
     @wallet = Wallet.new
+    authorize @wallet
   end
 
   def create
     @wallet = Wallet.new(wallet_params)
     @wallet.user = current_user
+    authorize @wallet
+
     if @wallet.save
       redirect_to wallet_path(@wallet), notice: 'Wallet was successfully created.'
     else
@@ -36,6 +39,7 @@ class WalletsController < ApplicationController
 
   def set_wallet
     @wallet = Wallet.find(params[:id])
+    authorize @wallet
   end
 
   def wallet_params

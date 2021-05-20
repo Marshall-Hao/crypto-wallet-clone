@@ -3,11 +3,14 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+    authorize @transaction
   end
 
   def create
     @transaction = Transaction.new(transaction_params)
     @transaction.wallet = @wallet
+    authorize @transaction
+
     if @transaction.activity == 'deposit'
       @wallet.update(balance: @wallet.balance + @transaction.amount)
       if @transaction.save
@@ -34,6 +37,7 @@ class TransactionsController < ApplicationController
 
   def set_wallet
     @wallet = Wallet.find(params[:wallet_id])
+    authorize @wallet
   end
 
   def transaction_params
