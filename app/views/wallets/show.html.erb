@@ -1,4 +1,12 @@
 <h2><%= @wallet.name %></h2>
 <p><%= @wallet.balance %></p>
 
+<ul class="list-group">
+  <% @wallet.transactions.each do |transaction| %>
+    <li class="list-group-item"><%= transaction.activity %></li>
+    <li class="list-group-item"><%= transaction.amount %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'edit the wallet', edit_wallet_path, class:"btn btn-flat"  %>
+<%= link_to 'make a transaction', new_wallet_transaction_path(@wallet), class:"btn btn-flat"  %>

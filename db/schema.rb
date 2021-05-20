@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_141316) do
+ActiveRecord::Schema.define(version: 2021_05_20_053939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "transactions", force: :cascade do |t|
-    t.string "type"
+    t.string "activity"
     t.integer "amount"
     t.string "sender_email"
     t.string "receiver_email"
