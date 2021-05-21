@@ -81,7 +81,7 @@ http://localhost:3000/
 
 Test account
 ```
-marshall@gmail.com(admin) 123456
+marshall@gmail.com 123456 (admin user)
 ```
 ```
 test1@gmail.com 123456
@@ -119,6 +119,6 @@ JavaScript: ```app/javascript/components``` folder.
 ## Coming features
 
 To do:
-- A good rails test
-- Improve the frontend
+- Improve the Rails Automated Testing
+- Improve the Frontend
 
