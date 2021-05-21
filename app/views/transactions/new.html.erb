@@ -1,6 +1,6 @@
 <div class="container new-list col-12 col-lg-4">
 <%= simple_form_for([@wallet, @transaction]) do |t| %>
-  <div class="form-inputs">
+  <div class="form-inputs" id="transaction-options">
     <%= t.input :activity,label: 'Make a transaction:' ,collection: Transaction::OPTIONS%>
   </div>
 
@@ -8,7 +8,7 @@
     <%= t.input :amount,label: 'Enter a Amount:', placeholder:"give a number" %>
   </div>
 
-  <div class="form-inputs">
+  <div class="form-inputs" id="receiver-email">
     <% emails = []%>
     <% User.all.each do |user| %>
       <% if @wallet.user != user %>

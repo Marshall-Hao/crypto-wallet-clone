@@ -13,3 +13,11 @@
 .list-sender {
   width: 250px;
 }
+
+#receiver-email {
+  display: none;
+}
+
+#receiver-email.show {
+  display: block;
+}

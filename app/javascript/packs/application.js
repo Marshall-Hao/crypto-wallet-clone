@@ -21,6 +21,13 @@ require("channels")
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
+import {displayWhenSelected} from '../components/options';
+const options = document.querySelector('#transaction_activity');
+const target = document.querySelector('#receiver-email');
+
+options.addEventListener("change", (e) =>
+    displayWhenSelected(options, "transfer", target)
+);
 
 // External imports
 import "bootstrap";
