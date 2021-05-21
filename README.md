@@ -36,7 +36,12 @@ As an Admin:
 
 ## Screenshot
 ![WebApp screenshot]
-
+![user_login:](./app/assets/images/user_login.png)
+![wallet_info:](./app/assets/images/wallet_info.png)
+![withdraw:](./app/assets/images/withdraw.png)
+![transfer:](./app/assets/images/transfer.png)
+![transaction_sender:](./app/assets/images/transaction_sender.png)
+![transaction_receiver:](./app/assets/images/transaction_receiver.png)
 
 ## Setup
 
