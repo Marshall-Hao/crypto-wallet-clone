@@ -8,6 +8,12 @@ class WalletsController < ApplicationController
   def show
   end
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  def record_not_found
+    flash[:alert] = "This wallet does not exist."
+    redirect_to(wallets_path)
+  end
+
   def new
     @wallet = Wallet.new
     authorize @wallet

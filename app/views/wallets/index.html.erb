@@ -12,14 +12,14 @@
     <li class="list-group-item list-activity"><%= wallet.name %></li>
     <li class="list-group-item list-amount"><%= wallet.balance %></li>
     <% if current_user.admin %>
-    <li class="list-group-item list-sender"><%= wallet.user.email %></li>
+      <li class="list-group-item list-sender"><%= wallet.user.email %></li>
     <% end %>
     <% if policy(wallet).edit? %>
-    <li class="list-group-item"><%= link_to 'Edit', edit_wallet_path(wallet), class:"btn btn-primary" %></li>
+      <li class="list-group-item"><%= link_to 'Edit', edit_wallet_path(wallet), class:"btn btn-primary" %></li>
     <% end %>
     <li class="list-group-item"><%= link_to 'transactions detail', wallet_path(wallet), class:"btn btn-primary" %></li>
     <% if policy(wallet).edit? %>
-    <li class="list-group-item"><%= link_to 'Make a transaction', new_wallet_transaction_path(wallet), class:"btn btn-primary" %></li>
+      <li class="list-group-item"><%= link_to 'Make a transaction', new_wallet_transaction_path(wallet), class:"btn btn-primary" %></li>
     <% end %>
   </ul>
   <% end %>

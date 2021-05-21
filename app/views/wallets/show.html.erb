@@ -2,9 +2,12 @@
 <h4>Wallet Name: <%=@wallet.name %></h4>
 <h5>Balance: <%= @wallet.balance %></h5>
 
-<%= link_to 'Edit The Wallet', edit_wallet_path, class:"btn btn-primary mb-3"  %>
-<%= link_to 'Make a Transaction', new_wallet_transaction_path(@wallet), class:"btn btn-primary mb-3"  %>
-
+<% if policy(@wallet).edit? %>
+  <%= link_to 'Edit The Wallet', edit_wallet_path, class:"btn btn-primary mb-3"  %>
+<% end %>
+<% if policy(@wallet).edit? %>
+  <%= link_to 'Make a Transaction', new_wallet_transaction_path(@wallet), class:"btn btn-primary mb-3"  %>
+<% end %>
 <h3>Transaction History</h3>
 <ul class="list-group list-group-horizontal-lg">
   <li class="list-group-item list-activity">Activity</li>
