@@ -1,5 +1,7 @@
 <div class="container new-list col-12 col-lg-4 mt-4">
 <h3>New Transaction</h3>
+<h4><%= link_to 'Wallet', wallet_path(@wallet) %></h4>
+<h4>Balance: <%= @wallet.balance %></h4>
 <%= simple_form_for([@wallet, @transaction]) do |t| %>
   <div class="form-inputs" id="transaction-options">
     <%= t.input :activity,label: 'Make a transaction:' ,collection: Transaction::OPTIONS%>

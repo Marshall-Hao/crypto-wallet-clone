@@ -12,6 +12,14 @@ class TransactionsController < ApplicationController
     authorize @transaction # pundit authorization
     @activity = @transaction.activity # get the activity(deposit/withdraw/transfer) from transaction
 
+    if @transaction.amount >= 0
+      activity_case
+    else
+      redirect_to new_wallet_transaction_path(@wallet), notice: 'Transaction cannot be created due to unappropriated input.' # return to the transaction new page
+    end
+  end
+
+  def activity_case
     case @activity
     when 'deposit'
       deposit_cash
@@ -23,14 +31,14 @@ class TransactionsController < ApplicationController
   end
 
   def deposit_cash
-    @wallet.update(balance: @wallet.balance + @transaction.amount) # deposit cash, balance increased
-    transaction_save
+      @wallet.update(balance: @wallet.balance + @transaction.amount) # deposit cash, balance increased
+      transaction_save
   end
 
   def transfer_cash
-    if @transaction.amount <= @wallet.balance # check if the transaction amount less than the balance
-      @wallet.update(balance: @wallet.balance - @transaction.amount) # transfer cash out, balance decreased
+    if @transaction.amount <= @wallet.balance && @transaction.receiver_email.present? # check if the transaction amount less than the balance, and the email exist
       receiver_transaction_create # on the receiver side, it will generate a receive transaction
+      @wallet.update(balance: @wallet.balance - @transaction.amount) # transfer cash out, balance decreased
       transaction_save
     else
       insufficient_cash_alert
@@ -58,14 +66,14 @@ class TransactionsController < ApplicationController
     if @transaction.save
       redirect_to wallet_path(@wallet), notice: 'Transaction was successfully created.'
     else
-      render :new # return to the transaction new page
+      redirect_to new_wallet_transaction_path(@wallet), notice: 'Transaction cannot be created due to unappropriated input.' # return to the transaction new page
     end
   end
 
   def insufficient_cash_alert
-    flash.now[:alert] = "Transaction cannot be done due to insufficient cash."
-    render :new # return to the transaction new page
+    redirect_to new_wallet_transaction_path(@wallet), notice: 'Transaction cannot be done due to insufficient cash.'
   end
+
 
   private
 

@@ -1,6 +1,6 @@
 # Cpypto-Wallet-Clone
 
-This is a crypto wallet clone web app.
+This is a crypto wallet clone web app made by Marshall Hao Chen
 
 This application helps user organise their money, they can deposit/withdraw money from the wallet, they can transfer money to another user.
 
