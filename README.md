@@ -17,7 +17,8 @@ Gems
 
  - [Devise](https://github.com/heartcombo/devise) for user authentication
  - [Pundit](https://github.com/varvet/pundit) for user can only edit/make transactions on their own wallet
- - [simple_form](https://github.com/heartcombo/simple_form) for user input
+ - [Simple_form](https://github.com/heartcombo/simple_form) for user input
+ - [launchy](https://github.com/copiousfreetime/launchy) for test environment
 
 ## Features
 As a User:
