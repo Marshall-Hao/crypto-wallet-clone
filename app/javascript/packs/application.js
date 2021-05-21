@@ -22,9 +22,11 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import {displayWhenSelected} from '../components/options';
+// transaction activity options
 const options = document.querySelector('#transaction_activity');
+// receiver-email div
 const target = document.querySelector('#receiver-email');
-
+// when the transaction activity options is transfer, the email div will show
 options.addEventListener("change", (e) =>
     displayWhenSelected(options, "transfer", target)
 );

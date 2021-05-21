@@ -1,7 +1,7 @@
 <div class="container new-list col-12 col-lg-10 mt-4">
 <h4>Wallet Name: <%=@wallet.name %></h4>
 <h5>Balance: <%= @wallet.balance %></h5>
-
+<!-- check if the user is eligible for this action -->
 <% if policy(@wallet).edit? %>
   <%= link_to 'Edit The Wallet', edit_wallet_path, class:"btn btn-primary mb-3"  %>
 <% end %>

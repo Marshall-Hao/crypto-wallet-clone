@@ -3,6 +3,7 @@
 <ul class="list-group list-group-horizontal-lg">
   <li class="list-group-item list-activity">Name</li>
   <li class="list-group-item list-amount">Balance</li>
+  <!-- check if the user is eligible for this action -->
   <% if current_user.admin %>
     <li class="list-group-item list-sender">User_Email</li>
   <% end %>
@@ -14,6 +15,7 @@
     <% if current_user.admin %>
       <li class="list-group-item list-sender"><%= wallet.user.email %></li>
     <% end %>
+    <!-- check if the user is eligible for this action -->
     <% if policy(wallet).edit? %>
       <li class="list-group-item"><%= link_to 'Edit', edit_wallet_path(wallet), class:"btn btn-primary" %></li>
     <% end %>

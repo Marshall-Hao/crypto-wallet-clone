@@ -108,6 +108,8 @@ Controllers are in the ```app/controllers```
   - wallets: ```app/controllers/wallets_controller.rb```
   - transactions: ```app/controllers/transactions_controller.rb```
 
+Pundit_Policy: ```app/policies```
+
 Schema: ```db/schema.rb```
 
 CSS: ```app/assets``` folder:
