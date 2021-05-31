@@ -18,7 +18,9 @@ Gems
  - [Devise](https://github.com/heartcombo/devise) for user authentication
  - [Pundit](https://github.com/varvet/pundit) for user can only edit/make transactions on their own wallet
  - [Simple_form](https://github.com/heartcombo/simple_form) for user input
- - [launchy](https://github.com/copiousfreetime/launchy) for test environment
+ - [launchy](https://github.com/copiousfreetime/launchy) for launching test environment(browser)
+ - [capybara](https://github.com/teamcapybara/capybara) for simulating how a real user would interact with web app
+ - [webdrivers](https://github.com/titusfortner/webdrivers) for downloading drivers and directs Selenium to use them
 
 ## Features
 As a User:
@@ -90,6 +92,11 @@ test1@gmail.com 123456
 ```
 test2@gmail.com 123456
 ```
+To Run Test
+```
+rails test:system
+rails test:models
+```
 
 ## Structure
 
@@ -109,6 +116,11 @@ Controllers are in the ```app/controllers```
   - wallets: ```app/controllers/wallets_controller.rb```
   - transactions: ```app/controllers/transactions_controller.rb```
 
+Tests are in the ```test```
+  - unit(model) test: ```test/models```
+  - system test: ```test/system```
+  - fixtures: ```test/fixtures```
+
 Pundit_Policy: ```app/policies```
 
 Schema: ```db/schema.rb```
@@ -120,6 +132,6 @@ JavaScript: ```app/javascript/components``` folder.
 ## Coming features
 
 To do:
-- Improve the Rails Automated Testing
+- Improve the Rails Automated Testing (done)
 - Improve the Frontend
 
