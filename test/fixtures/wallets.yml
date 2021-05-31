@@ -1,0 +1,11 @@
+testwallet:
+  id: 1
+  name: "testwallet"
+  balance: 500
+  user_id: 1
+
+testwallet2:
+  id: 2
+  name: "testwallet"
+  balance: 0
+  user_id: 2

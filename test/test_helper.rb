@@ -1,6 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'capybara/rails'
+require 'webdrivers'
 require 'rails/test_help'
 
 
